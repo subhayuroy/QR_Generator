@@ -19,3 +19,20 @@ def generate():
         showCode()
     except:
         pass
+
+def showCode():
+    global photo
+    notificationLabel.config(image=photo)
+    subLabel.config(text="Showing QR code for: " + subject.get())
+
+def save():
+    dir = path1 = os.getcwd() + "\\QR Codes" #folder to save all teh codes
+    if not os.path.exists(dir):
+        os.makedirs(dir)
+    try:
+        if len(name.get()) != 0:
+            qrImage = myQr.png(os.path.join(dir, name.get() + ".png"), scale=6)
+        else:
+            messagebox.showinfo("Error!", "Filename cannot be empty")
+    except:
+        messagebox.showinfo("Error!", "Please generate the code first")

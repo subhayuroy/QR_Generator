@@ -30,7 +30,7 @@ def showCode():
 
 def save():
     dir = path1 = os.getcwd() + "\\QR Codes"  # folder to save all teh codes
-    if not os.path.exists(dir):
+    if not os.path.exists(dir):  # create a folder if it doesn't exist
         os.makedirs(dir)
     try:
         if len(name.get()) != 0:
@@ -40,11 +40,12 @@ def save():
     except:
         messagebox.showinfo("Error!", "Please generate the code first")
 
+
 lab1 = Label(window, text="Enter subject", font=("Helvetica", 12))
 lab1.grid(row=0, column=0, sticky=N + S + E + W)
 
 lab2 = Label(window, text="Enter file name", font=("Helvetica", 12))
-lab2.grid(row=0, column=0, sticky=N + S + E + W)
+lab2.grid(row=1, column=0, sticky=N + S + E + W)
 
 subject = StringVar()
 subjectEntry = Entry(window, textvariable=subject, font=("Helvetica", 12))
@@ -52,7 +53,7 @@ subjectEntry.grid(row=0, column=1, sticky=N + S + E + W)
 
 name = StringVar()
 nameEntry = Entry(window, textvariable=name, font=("Helvetica", 12))
-nameEntry.grid(row=0, column=1, sticky=N + S + E + W)
+nameEntry.grid(row=1, column=1, sticky=N + S + E + W)
 
 createButton = Button(window, text="Create QR Code", font=("Helvetica", 12), width=15, command=generate)
 createButton.grid(row=0, column=3, sticky=N + S + E + W)
@@ -68,7 +69,9 @@ showButton.grid(row=1, column=3, sticky=N + S + E + W)
 
 totalRows = 3
 totalCols = 3
-for row in range(totalRows+1):
+for row in range(totalRows + 1):
     window.grid_rowconfigure(row, weight=1)
-for col in range(totalCols+1):
+for col in range(totalCols + 1):
     window.grid_columnconfigure(col, weight=1)
+
+window.mainloop()

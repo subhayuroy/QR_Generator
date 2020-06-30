@@ -65,3 +65,10 @@ subLabel.grid(row=3, column=1, sticky=N + S + E + W)
 
 showButton = Button(window, text="Save as PNG", font=("Helvetica, 12"), width=15, command=save)
 showButton.grid(row=1, column=3, sticky=N + S + E + W)
+
+totalRows = 3
+totalCols = 3
+for row in range(totalRows+1):
+    window.grid_rowconfigure(row, weight=1)
+for col in range(totalCols+1):
+    window.grid_columnconfigure(col, weight=1)

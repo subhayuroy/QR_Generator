@@ -6,6 +6,7 @@ import os
 window = Tk()
 window.title("QR Code Generator")
 
+
 def generate():
     if len(subject.get()) != 0:
         global myQr
@@ -20,13 +21,15 @@ def generate():
     except:
         pass
 
+
 def showCode():
     global photo
     notificationLabel.config(image=photo)
     subLabel.config(text="Showing QR code for: " + subject.get())
 
+
 def save():
-    dir = path1 = os.getcwd() + "\\QR Codes" #folder to save all teh codes
+    dir = path1 = os.getcwd() + "\\QR Codes"  # folder to save all teh codes
     if not os.path.exists(dir):
         os.makedirs(dir)
     try:
@@ -36,3 +39,29 @@ def save():
             messagebox.showinfo("Error!", "Filename cannot be empty")
     except:
         messagebox.showinfo("Error!", "Please generate the code first")
+
+lab1 = Label(window, text="Enter subject", font=("Helvetica", 12))
+lab1.grid(row=0, column=0, sticky=N + S + E + W)
+
+lab2 = Label(window, text="Enter file name", font=("Helvetica", 12))
+lab2.grid(row=0, column=0, sticky=N + S + E + W)
+
+subject = StringVar()
+subjectEntry = Entry(window, textvariable=subject, font=("Helvetica", 12))
+subjectEntry.grid(row=0, column=1, sticky=N + S + E + W)
+
+name = StringVar()
+nameEntry = Entry(window, textvariable=name, font=("Helvetica", 12))
+nameEntry.grid(row=0, column=1, sticky=N + S + E + W)
+
+createButton = Button(window, text="Create QR Code", font=("Helvetica", 12), width=15, command=generate)
+createButton.grid(row=0, column=3, sticky=N + S + E + W)
+
+notificationLabel = Label(window, text="")
+notificationLabel.grid(row=2, column=1, sticky=N + S + E + W)
+
+subLabel = Label(window, text="")
+subLabel.grid(row=3, column=1, sticky=N + S + E + W)
+
+showButton = Button(window, text="Save as PNG", font=("Helvetica, 12"), width=15, command=save)
+showButton.grid(row=1, column=3, sticky=N + S + E + W)

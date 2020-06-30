@@ -6,7 +6,6 @@ import os
 window = Tk()
 window.title("QR Code Generator")
 
-
 def generate():
     if len(subject.get()) != 0:
         global myQr
@@ -21,12 +20,10 @@ def generate():
     except:
         pass
 
-
 def showCode():
     global photo
     notificationLabel.config(image=photo)
     subLabel.config(text="Showing QR code for: " + subject.get())
-
 
 def save():
     dir = path1 = os.getcwd() + "\\QR Codes"  # folder to save all teh codes
@@ -39,7 +36,6 @@ def save():
             messagebox.showinfo("Error!", "Filename cannot be empty")
     except:
         messagebox.showinfo("Error!", "Please generate the code first")
-
 
 lab1 = Label(window, text="Enter subject", font=("Helvetica", 12))
 lab1.grid(row=0, column=0, sticky=N + S + E + W)
